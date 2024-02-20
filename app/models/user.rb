@@ -51,12 +51,12 @@ class User < ApplicationRecord
 
   # User#liked_photos: returns rows from the photos table associated to this user through its likes
 
-  has_many(:liked_photos, through: => :likes, source: => :photo)
+  has_many(:liked_photos, through: :likes, source: :photo)
 
 
   # User#commented_photos: returns rows from the photos table associated to this user through its comments
 
-  has_many(:commented_photos, through: => :comments, source: => :photo)
+  has_many(:commented_photos, through: :comments, source: :photo)
 
   # User#sent_follow_requests
 
@@ -64,7 +64,7 @@ class User < ApplicationRecord
 
   # User#received_follow_requests
 
-  has_many(received_follow_requests, class_name: "FollowRequest", foreign_key: "recipient_id")
+  has_many(:received_follow_requests, class_name: "FollowRequest", foreign_key: "recipient_id")
 
   ### Indirect associations built on scoped associations
 
